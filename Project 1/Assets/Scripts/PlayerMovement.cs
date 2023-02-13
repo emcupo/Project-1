@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _speed = 1f;
     private Vector2 _movementInput = Vector2.zero;
 
+    // assigns any unassigned variables
     private void Awake()
     {
         if (_rb == null)
@@ -21,10 +22,11 @@ public class PlayerMovement : MonoBehaviour
             _animator = GetComponent<Animator>();
     }
 
+    // changes player velocity to match the input multiplied by the speed
     private void FixedUpdate()
     {
         _rb.velocity = _movementInput * _speed;
-        if (_animator != null)
+        if (_animator != null) // passes information to the animator to properly sync movement
         {
             _animator.SetFloat("Horizontal", _movementInput.x);
             _animator.SetFloat("Vertical", _movementInput.y);
@@ -32,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    // reads the players input using Unity's input system
     private void OnMove(InputValue inputValue)
     {
         _movementInput = inputValue.Get<Vector2>();

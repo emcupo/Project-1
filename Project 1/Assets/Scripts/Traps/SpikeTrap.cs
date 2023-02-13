@@ -19,7 +19,7 @@ public class SpikeTrap : MonoBehaviour
 
     private WaitForSeconds _speed;
     private WaitForSeconds _duration;
-    private GameObject _player;
+    private Respawn _player;
 
     private void Awake()
     {
@@ -40,7 +40,7 @@ public class SpikeTrap : MonoBehaviour
         _inTrap = true;
         if (collision.CompareTag("Player"))
         {
-            _player = collision.gameObject;
+            _player = collision.GetComponent<Respawn>();
             if (!_startedUp)
                 StartCoroutine(TriggerTrap());
         }
@@ -64,7 +64,8 @@ public class SpikeTrap : MonoBehaviour
     }
     private void hurtPlayer()
     {
-        Debug.Log(_player.name + " has been hurt");
+        if (_player.gameObject.activeSelf)
+            _player.RespawnPlayer();
     }
 
     private IEnumerator TriggerTrap()
