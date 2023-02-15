@@ -34,6 +34,11 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public void StopEverything()
+    {
+        _rb.velocity = Vector2.zero;
+    }
+
     // reads the players input using Unity's input system
     private void OnMove(InputValue inputValue)
     {

@@ -25,8 +25,10 @@ public class Respawn : MonoBehaviour
     }
     public void RespawnPlayer()
     {
+        _movement.StopEverything();
         _movement.enabled = false;
         _collider.enabled = false;
+
 
         StartCoroutine(Fade(_sprite.color, new Color(1f, 1f, 1f, 0f), _respawnTimer - 0.25f));
         StartCoroutine(RestartScene());

@@ -8,7 +8,7 @@ public class SpikeTrap : MonoBehaviour
     private SpriteRenderer _renderer;
     private bool _active;
     private bool _startedUp;
-    private bool _inTrap;
+    private bool _motionDetected;
 
     private Sprite _inactiveSprite;
     [Tooltip("How the trap will look while active, when inactive it will revert to its original sprite")]
@@ -37,7 +37,7 @@ public class SpikeTrap : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        _inTrap = true;
+        _motionDetected = true;
         if (collision.CompareTag("Player"))
         {
             _player = collision.GetComponent<Respawn>();
@@ -48,26 +48,20 @@ public class SpikeTrap : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        _inTrap = false;
+        _motionDetected = false;
+        _player = null;
     }
 
     private void FixedUpdate()
     {
-        if (_inTrap)
+        if (_motionDetected)
         {
-            if (_active)
-                hurtPlayer();
-
+            if (_active && _player != null)
+                _player.RespawnPlayer();
             if (!_startedUp)
                 StartCoroutine(TriggerTrap());
         }
     }
-    private void hurtPlayer()
-    {
-        if (_player.gameObject.activeSelf)
-            _player.RespawnPlayer();
-    }
-
     private IEnumerator TriggerTrap()
     {
         _startedUp = true;

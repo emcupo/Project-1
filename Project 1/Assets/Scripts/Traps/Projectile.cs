@@ -15,13 +15,15 @@ public class Projectile : MonoBehaviour
         if (_duration > 0)
             Destroy(gameObject, _duration);
     }
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!collision.CompareTag("Trap"))
+            Destroy(gameObject);
+
         // Upon being triggered by the player, respawn the player
         if (collision.CompareTag("Player"))
             collision.GetComponent<Respawn>().RespawnPlayer();
+
     }
 
     // Makes the projectile fly upward
