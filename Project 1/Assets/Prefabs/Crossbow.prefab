@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 8236689461130965831}
   _arrow: {fileID: 7450559535928355565, guid: d3199ba6b6054a44086d8556fd1f3a3d, type: 3}
+  _duration: 5
   _restTime: 1
   _shotCooldown: 1
 --- !u!1 &8236689461130965830
