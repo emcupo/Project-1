@@ -32,9 +32,9 @@ public class Crossbow : MonoBehaviour
     {
         Projectile arrow = Instantiate(_arrow, _spawnPoint, false);
         _arrow.setDuration(_duration);
-        arrow.enabled = false;
+        arrow.isInFlight(false);
         yield return _rest;
-        arrow.enabled = true;
+        arrow.isInFlight(true);
         yield return _shot;
         StartCoroutine(shootArrow());
     }
