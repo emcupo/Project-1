@@ -8,6 +8,8 @@ public class Crossbow : MonoBehaviour
 
     private WaitForSeconds _rest;
     private WaitForSeconds _shot;
+    [Header("Crossbow")]
+    [SerializeField] private float InitialDelay = 1.0f;
 
     [Header("Projectile")]
     [SerializeField] private float _duration = 5f;
@@ -22,11 +24,15 @@ public class Crossbow : MonoBehaviour
 
     private void Start()
     {
+        Invoke("StartShooting", InitialDelay);
+    }
+
+    private void StartShooting()
+    {
         if (_arrow != null && _spawnPoint != null)
             StartCoroutine(shootArrow());
         else
             Debug.LogWarning("Unassinged references");
-
     }
     private IEnumerator shootArrow()
     {

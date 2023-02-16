@@ -9,7 +9,7 @@ public class Respawn : MonoBehaviour
     private WaitForSeconds _respawn;
 
     private PlayerMovement _movement;
-    private BoxCollider2D _collider;
+    private Collider2D _collider;
 
     private SpriteRenderer _sprite;
 
@@ -17,7 +17,7 @@ public class Respawn : MonoBehaviour
     {
         // assigns unassigned variables
         _movement = GetComponent<PlayerMovement>();
-        _collider = GetComponent<BoxCollider2D>();
+        _collider = GetComponent<Collider2D>();
         _sprite = GetComponent<SpriteRenderer>();
 
         // creates the WaitForSeconds used by the restart scene coroutine
