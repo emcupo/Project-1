@@ -41,7 +41,7 @@ public class GrateTrap : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && _index == 2)
+        if (collision.CompareTag("Player") && _index == 3)
         {
             collision.GetComponent<Respawn>().RespawnPlayer();
         }
@@ -49,8 +49,8 @@ public class GrateTrap : MonoBehaviour
 
     private IEnumerator NextState()
     {
-        ChangeSprites();
-        if (_index != 3)
+
+        if (_index < _grates.Length - 1)
         {
             _index++;
             yield return _changeState;
@@ -60,6 +60,7 @@ public class GrateTrap : MonoBehaviour
             _index = 0;
             yield return _resetDuration;
         }
+        ChangeSprites();
         StartCoroutine(NextState());
     }
 
