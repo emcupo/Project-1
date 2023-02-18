@@ -5,9 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class SpikeTrap : MonoBehaviour
 {
+    private enum trapState { HIDDEN, INACTIVE, STARTED, ACTIVE };
+
     private SpriteRenderer _renderer;
-    private bool _active;
-    private bool _startedUp;
+    [SerializeField] private trapState _state = trapState.HIDDEN;
+
     private bool _motionDetected;
 
     private Sprite _inactiveSprite;
@@ -31,17 +33,27 @@ public class SpikeTrap : MonoBehaviour
         if (_activeSprite == null)
             _activeSprite = _inactiveSprite;
 
+        if (_state == trapState.HIDDEN)
+        {
+            _renderer.color = Color.clear;
+        }
         _speed = new WaitForSeconds(_triggerSpeed);
         _duration = new WaitForSeconds(_triggerDuration);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (_state == trapState.HIDDEN)
+        {
+            _renderer.color = Color.white;
+            _state = trapState.INACTIVE;
+        }
+
         _motionDetected = true;
         if (collision.CompareTag("Player"))
         {
             _player = collision.GetComponent<Respawn>();
-            if (!_startedUp)
+            if (_state == trapState.INACTIVE)
                 StartCoroutine(TriggerTrap());
         }
     }
@@ -56,24 +68,23 @@ public class SpikeTrap : MonoBehaviour
     {
         if (_motionDetected)
         {
-            if (_active && _player != null)
+            if (_state == trapState.ACTIVE && _player != null)
                 _player.RespawnPlayer();
-            if (!_startedUp)
+            if (_state == trapState.INACTIVE)
                 StartCoroutine(TriggerTrap());
         }
     }
+
     private IEnumerator TriggerTrap()
     {
-        _startedUp = true;
+        _state = trapState.STARTED;
 
         yield return _speed;
-        _active = true;
+        _state = trapState.ACTIVE;
         _renderer.sprite = _activeSprite;
 
         yield return _duration;
-        _active = false;
+        _state = trapState.INACTIVE;
         _renderer.sprite = _inactiveSprite;
-
-        _startedUp = false;
     }
 }
