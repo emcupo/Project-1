@@ -12,6 +12,7 @@ public class Respawn : MonoBehaviour
     private Collider2D _collider;
 
     private SpriteRenderer _sprite;
+    private SpriteRenderer _shadowSprite;
 
     private void Awake()
     {
@@ -19,6 +20,7 @@ public class Respawn : MonoBehaviour
         _movement = GetComponent<PlayerMovement>();
         _collider = GetComponent<Collider2D>();
         _sprite = GetComponent<SpriteRenderer>();
+        _shadowSprite = GetComponentsInChildren<SpriteRenderer>()[1];
 
         // creates the WaitForSeconds used by the restart scene coroutine
         _respawn = new WaitForSeconds(_respawnTimer);
@@ -42,6 +44,7 @@ public class Respawn : MonoBehaviour
         yield return _respawn;
         transform.position = _startPosition;
         _sprite.color = Color.white;
+        _shadowSprite.color = Color.white;
         enablePlayer(true);
     }
 
@@ -58,6 +61,7 @@ public class Respawn : MonoBehaviour
         while (elapsedTime < time)
         {
             _sprite.color = Color.Lerp(start, end, elapsedTime / time);
+            _shadowSprite.color = Color.Lerp(start, end, elapsedTime / time);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
