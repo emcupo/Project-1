@@ -216,9 +216,9 @@ Transform:
   - {fileID: 591102295}
   - {fileID: 2140775263}
   - {fileID: 1109774464}
-  - {fileID: 873801964}
-  - {fileID: 1473039041}
   - {fileID: 2019090181}
+  - {fileID: 1473039041}
+  - {fileID: 873801964}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5776,7 +5776,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -7003,7 +7003,7 @@ Transform:
   - {fileID: 1787095469}
   - {fileID: 258486005}
   m_Father: {fileID: 138805956}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2055116734
 PrefabInstance:
