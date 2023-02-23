@@ -31,11 +31,13 @@ public class Key : MonoBehaviour
         }
     }
 
-    private void LockDoors() {
+    private void LockDoors()
+    {
         _renderer.enabled = true;
         foreach (GameObject door in _doors)
         {
-            door.SetActive(true);
+            if (door != null)
+                door.SetActive(true);
         }
     }
 
@@ -45,7 +47,8 @@ public class Key : MonoBehaviour
         {
             foreach (GameObject door in _doors)
             {
-                door.SetActive(false);
+                if (door != null)
+                    door.SetActive(false);
             }
             _renderer.enabled = false;
         }
