@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63911d2b96972b742a5ea27760d4a3c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
+  _sprites:
   - {fileID: 88343353, guid: bb6a15c6637eb784396c948edbe80fa1, type: 3}
   - {fileID: -1865591732, guid: bb6a15c6637eb784396c948edbe80fa1, type: 3}
   - {fileID: -448475907, guid: bb6a15c6637eb784396c948edbe80fa1, type: 3}
@@ -426,7 +426,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:

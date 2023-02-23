@@ -6,18 +6,23 @@ public class Crossbow : MonoBehaviour
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private Projectile _arrow;
 
-    private WaitForSeconds _rest;
-    private WaitForSeconds _shot;
+
     [Header("Crossbow")]
     [SerializeField] private float InitialDelay = 1.0f;
-
-    [Header("Projectile")]
-    [SerializeField] private float _duration = 5f;
     [SerializeField] private float _restTime = 1f;
     [SerializeField] private float _shotCooldown = 1f;
 
+    private AudioSource _audioSource;
+
+    private WaitForSeconds _rest;
+    private WaitForSeconds _shot;
+
+    [Header("Projectile")]
+    [SerializeField] private float _duration = 5f;
+
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         _rest = new WaitForSeconds(_restTime);
         _shot = new WaitForSeconds(_shotCooldown);
     }
@@ -40,6 +45,7 @@ public class Crossbow : MonoBehaviour
         _arrow.setDuration(_duration);
         arrow.isInFlight(false);
         yield return _rest;
+        _audioSource.Play();
         arrow.isInFlight(true);
         yield return _shot;
         StartCoroutine(shootArrow());
