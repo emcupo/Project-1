@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ public class Respawn : MonoBehaviour
 
     private SpriteRenderer _sprite;
     private SpriteRenderer _shadowSprite;
+
+    public static Action playerDied;
 
     private void Awake()
     {
@@ -46,6 +49,7 @@ public class Respawn : MonoBehaviour
         _sprite.color = Color.white;
         _shadowSprite.color = Color.white;
         enablePlayer(true);
+        playerDied?.Invoke();
     }
 
     private void enablePlayer(bool enabled)
