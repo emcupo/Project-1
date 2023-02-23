@@ -8,7 +8,7 @@ public class GrateTrap : MonoBehaviour
 
     [Tooltip("Use 4 slots and they will be active for the following... " +
         "0. Inactive period 1. warning period 2. active period 3. reset period")]
-    [SerializeField] private Sprite[] sprites = new Sprite[3];
+    [SerializeField] private Sprite[] _sprites = new Sprite[3];
     [SerializeField] private int _index = 0;
 
 
@@ -50,7 +50,7 @@ public class GrateTrap : MonoBehaviour
     private IEnumerator NextState()
     {
 
-        if (_index < _grates.Length - 1)
+        if (_index < _sprites.Length - 1)
         {
             _index++;
             yield return _changeState;
@@ -68,7 +68,7 @@ public class GrateTrap : MonoBehaviour
     {
         for (int i = 0; i < _grates.Length; i++)
         {
-            _grates[i].sprite = sprites[_index];
+            _grates[i].sprite = _sprites[_index];
         }
 
     }
