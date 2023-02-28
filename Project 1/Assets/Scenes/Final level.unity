@@ -405,7 +405,6 @@ GameObject:
   m_Component:
   - component: {fileID: 61220940}
   - component: {fileID: 61220939}
-  - component: {fileID: 61220938}
   - component: {fileID: 61220941}
   m_Layer: 0
   m_Name: Main Camera
@@ -414,14 +413,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &61220938
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 61220937}
-  m_Enabled: 1
 --- !u!20 &61220939
 Camera:
   m_ObjectHideFlags: 0
@@ -13436,6 +13427,19 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &554682674 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8820307568016745550, guid: c9dcfa23fb878c44892c39666ffce907, type: 3}
+  m_PrefabInstance: {fileID: 44259193}
+  m_PrefabAsset: {fileID: 0}
+--- !u!81 &554682675
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554682674}
+  m_Enabled: 1
 --- !u!1001 &609136184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14043,21 +14047,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8236689459817733256, guid: 67deb0e5638e0d3439ca09a03f9eb07a, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8236689459817733257, guid: 67deb0e5638e0d3439ca09a03f9eb07a, type: 3}
       propertyPath: m_RootOrder
       value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 8236689459817733257, guid: 67deb0e5638e0d3439ca09a03f9eb07a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8236689459817733257, guid: 67deb0e5638e0d3439ca09a03f9eb07a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8236689459817733257, guid: 67deb0e5638e0d3439ca09a03f9eb07a, type: 3}
       propertyPath: m_LocalPosition.x
