@@ -25,7 +25,7 @@ public class Projectile : MonoBehaviour
 
             // Upon being triggered by the player, respawn the player
             if (collision.CompareTag("Player"))
-                collision.GetComponent<Respawn>().RespawnPlayer();
+                Respawn.playerDied?.Invoke();
         }
     }
 

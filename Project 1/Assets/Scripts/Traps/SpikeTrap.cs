@@ -69,7 +69,7 @@ public class SpikeTrap : MonoBehaviour
         if (_motionDetected)
         {
             if (_state == trapState.ACTIVE && _player != null)
-                _player.RespawnPlayer();
+                Respawn.playerDied?.Invoke();
             if (_state == trapState.INACTIVE)
                 StartCoroutine(TriggerTrap());
         }

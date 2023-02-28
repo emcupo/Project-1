@@ -43,7 +43,7 @@ public class GrateTrap : MonoBehaviour
     {
         if (collision.CompareTag("Player") && _index == 3)
         {
-            collision.GetComponent<Respawn>().RespawnPlayer();
+            Respawn.playerDied?.Invoke();
         }
     }
 

@@ -9,7 +9,7 @@ public class KillPlayer : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<Respawn>().RespawnPlayer();
+            Respawn.playerDied?.Invoke();
         }
     }
 
