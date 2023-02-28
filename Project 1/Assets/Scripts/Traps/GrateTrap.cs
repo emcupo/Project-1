@@ -17,6 +17,8 @@ public class GrateTrap : MonoBehaviour
 
     [Space][SerializeField] private float _changeTimer = 1f;
 
+    private AudioSource audioSource;
+
     private WaitForSeconds _changeState;
     private WaitForSeconds _resetDuration;
 
@@ -24,6 +26,7 @@ public class GrateTrap : MonoBehaviour
     {
         _changeState = new WaitForSeconds(_changeTimer);
         _resetDuration = new WaitForSeconds(_changeTimer / 2);
+        audioSource = GetComponent<AudioSource>();
 
         _grates = GetComponentsInChildren<SpriteRenderer>();
 
@@ -71,5 +74,11 @@ public class GrateTrap : MonoBehaviour
             _grates[i].sprite = _sprites[_index];
         }
 
+    }
+
+    private void Update()
+    {
+        if (_index == 3 && !audioSource.isPlaying)
+            audioSource.Play();
     }
 }

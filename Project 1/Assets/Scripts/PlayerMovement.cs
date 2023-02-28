@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         {
             _animator.SetFloat("Horizontal", _movementInput.x);
             _animator.SetFloat("Vertical", _movementInput.y);
-            
+
         }
 
     }
@@ -53,7 +53,8 @@ public class PlayerMovement : MonoBehaviour
         _animator.SetBool("Alive", false);
     }
 
-    public void UnkillMovement() {
+    public void UnkillMovement()
+    {
         _animator.SetBool("Alive", true);
     }
 
