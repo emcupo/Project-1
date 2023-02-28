@@ -13,7 +13,7 @@ public class Respawn : MonoBehaviour
     private Collider2D _collider;
 
 
-    [SerializeField] private GameObject deadBody;
+    [SerializeField] private GameObject _deadBody;
     private SpriteRenderer _sprite;
     private SpriteRenderer _shadowSprite;
 
@@ -26,6 +26,7 @@ public class Respawn : MonoBehaviour
     {
         // assigns unassigned variables
         _collider = GetComponent<Collider2D>();
+        _movement = GetComponent<PlayerMovement>();
 
         SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
         _sprite = renderers[0];
@@ -59,6 +60,7 @@ public class Respawn : MonoBehaviour
     private IEnumerator RestartScene()
     {
         yield return _respawn;
+        Instantiate(_deadBody, transform.position, Quaternion.identity);
         transform.position = _startPosition;
         enablePlayer(true);
         playerRespawned?.Invoke();
