@@ -12,10 +12,10 @@ public class Respawn : MonoBehaviour
     private PlayerMovement _movement;
     private Collider2D _collider;
 
+    private AudioSource _audioSource;
+
 
     [SerializeField] private GameObject _deadBody;
-    private SpriteRenderer _sprite;
-    private SpriteRenderer _shadowSprite;
 
     public static Action playerDied;
     public static Action playerRespawned;
@@ -28,9 +28,7 @@ public class Respawn : MonoBehaviour
         _collider = GetComponent<Collider2D>();
         _movement = GetComponent<PlayerMovement>();
 
-        SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
-        _sprite = renderers[0];
-        _shadowSprite = renderers[1];
+        _audioSource = GetComponent<AudioSource>();
 
         // creates the WaitForSeconds used by the restart scene coroutine
         _respawn = new WaitForSeconds(_respawnTimer);
@@ -53,6 +51,7 @@ public class Respawn : MonoBehaviour
     public void RespawnPlayer()
     {
         deaths++;
+        _audioSource.Play();
         enablePlayer(false);
         StartCoroutine(RestartScene());
     }
@@ -63,6 +62,7 @@ public class Respawn : MonoBehaviour
         Instantiate(_deadBody, transform.position, Quaternion.identity);
         transform.position = _startPosition;
         enablePlayer(true);
+        _audioSource.Stop();
         playerRespawned?.Invoke();
 
     }
