@@ -372,7 +372,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grate Grid
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6490892050238962173, guid: d34c920cae58d1f4a8b4856cef5f1dbf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d34c920cae58d1f4a8b4856cef5f1dbf, type: 3}
 --- !u!1001 &556320935
 PrefabInstance:
@@ -901,7 +902,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpikeTrap
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1731395018086210217, guid: d6d9a5a6ff5b04f4291b25eedfc17e3e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d6d9a5a6ff5b04f4291b25eedfc17e3e, type: 3}
 --- !u!1 &1112027475
 GameObject:
