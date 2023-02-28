@@ -19,12 +19,15 @@ public class SpikeTrap : MonoBehaviour
     [SerializeField] private float _triggerSpeed = 1f;
     [SerializeField] private float _triggerDuration = 2f;
 
+    private AudioSource audioSource;
+
     private WaitForSeconds _speed;
     private WaitForSeconds _duration;
     private Respawn _player;
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         if (_renderer == null)
             _renderer = GetComponent<SpriteRenderer>();
 
@@ -82,7 +85,7 @@ public class SpikeTrap : MonoBehaviour
         yield return _speed;
         _state = trapState.ACTIVE;
         _renderer.sprite = _activeSprite;
-
+        audioSource.Play();
         yield return _duration;
         _state = trapState.INACTIVE;
         _renderer.sprite = _inactiveSprite;
