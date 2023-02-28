@@ -22,6 +22,18 @@ public class PlayerMovement : MonoBehaviour
             _animator = GetComponent<Animator>();
     }
 
+    private void OnEnable()
+    {
+        Respawn.playerDied += KillMovement;
+        Respawn.playerRespawned += UnkillMovement;
+    }
+
+    private void OnDisable()
+    {
+        Respawn.playerDied -= KillMovement;
+        Respawn.playerRespawned -= UnkillMovement;
+    }
+
     // changes player velocity to match the input multiplied by the speed
     private void FixedUpdate()
     {
@@ -30,13 +42,19 @@ public class PlayerMovement : MonoBehaviour
         {
             _animator.SetFloat("Horizontal", _movementInput.x);
             _animator.SetFloat("Vertical", _movementInput.y);
+            
         }
 
     }
 
-    public void StopEverything()
+    public void KillMovement()
     {
         _rb.velocity = Vector2.zero;
+        _animator.SetBool("Alive", false);
+    }
+
+    public void UnkillMovement() {
+        _animator.SetBool("Alive", true);
     }
 
     // reads the players input using Unity's input system

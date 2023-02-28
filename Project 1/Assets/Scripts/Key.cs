@@ -11,12 +11,12 @@ public class Key : MonoBehaviour
 
     private void OnEnable()
     {
-        Respawn.playerDied += LockDoors;
+        Respawn.playerRespawned += LockDoors;
     }
 
     private void OnDisable()
     {
-        Respawn.playerDied -= LockDoors;
+        Respawn.playerRespawned -= LockDoors;
     }
 
     private void Awake()

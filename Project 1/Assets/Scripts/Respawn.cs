@@ -12,18 +12,24 @@ public class Respawn : MonoBehaviour
     private PlayerMovement _movement;
     private Collider2D _collider;
 
+
+    [SerializeField] private GameObject deadBody;
     private SpriteRenderer _sprite;
     private SpriteRenderer _shadowSprite;
 
     public static Action playerDied;
+    public static Action playerRespawned;
+
+    public static int deaths = 0;
 
     private void Awake()
     {
         // assigns unassigned variables
-        _movement = GetComponent<PlayerMovement>();
         _collider = GetComponent<Collider2D>();
-        _sprite = GetComponent<SpriteRenderer>();
-        _shadowSprite = GetComponentsInChildren<SpriteRenderer>()[1];
+
+        SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
+        _sprite = renderers[0];
+        _shadowSprite = renderers[1];
 
         // creates the WaitForSeconds used by the restart scene coroutine
         _respawn = new WaitForSeconds(_respawnTimer);
@@ -33,12 +39,20 @@ public class Respawn : MonoBehaviour
     {
         _startPosition = transform.position;
     }
+
+    private void OnEnable()
+    {
+        playerDied += RespawnPlayer;
+    }
+
+    private void OnDisable()
+    {
+        playerDied -= RespawnPlayer;
+    }
     public void RespawnPlayer()
     {
-        _movement.StopEverything();
+        deaths++;
         enablePlayer(false);
-
-        StartCoroutine(Fade(_sprite.color, new Color(1f, 1f, 1f, 0f), _respawnTimer - 0.25f));
         StartCoroutine(RestartScene());
     }
 
@@ -46,10 +60,9 @@ public class Respawn : MonoBehaviour
     {
         yield return _respawn;
         transform.position = _startPosition;
-        _sprite.color = Color.white;
-        _shadowSprite.color = Color.white;
         enablePlayer(true);
-        playerDied?.Invoke();
+        playerRespawned?.Invoke();
+
     }
 
     private void enablePlayer(bool enabled)
@@ -59,7 +72,7 @@ public class Respawn : MonoBehaviour
     }
 
     // Fades sprite color within a time frame
-    IEnumerator Fade(Color start, Color end, float time)
+    /*IEnumerator Fade(Color start, Color end, float time)
     {
         float elapsedTime = 0;
         while (elapsedTime < time)
@@ -70,5 +83,5 @@ public class Respawn : MonoBehaviour
             yield return null;
         }
         _sprite.color = end;
-    }
+    }*/
 }
