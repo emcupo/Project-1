@@ -1,11 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DontDestroyAudio : MonoBehaviour
 {
+    public static DontDestroyAudio instance;
+
     void Awake()
     {
-        DontDestroyOnLoad(transform.gameObject);
+        if (instance != null)
+        {
+            Destroy(instance.gameObject);
+        }
+        instance = this;
+
+        DontDestroyOnLoad(gameObject);
     }
 }
