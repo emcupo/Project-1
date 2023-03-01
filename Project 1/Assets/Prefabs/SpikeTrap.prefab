@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _state: 0
   _activeSprite: {fileID: -1589199186, guid: 21b3e9a6ba9814540a2048f17159e2bc, type: 3}
-  _triggerSpeed: 0.75
+  _triggerSpeed: 0.5
   _triggerDuration: 2
 --- !u!82 &1731395018086210217
 AudioSource:
