@@ -64,4 +64,10 @@ public class PlayerMovement : MonoBehaviour
         _movementInput = inputValue.Get<Vector2>();
     }
 
+    private void OnPause()
+    {
+        if (PauseManager.instance != null)
+            PauseManager.instance.Pause();
+    }
+
 }

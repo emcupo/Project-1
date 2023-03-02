@@ -16,11 +16,11 @@ public class SettingsManager : MonoBehaviour
         {
             
             SoundSlider volumeSlider = soundSliders[i];
-            Debug.Log("Slider " + volumeSlider.name + " is being adjusted");
+            //Debug.Log("Slider " + volumeSlider.name + " is being adjusted");
             if (PlayerPrefs.HasKey(volumeSlider.name))
             {
                 float volumeLevel = PlayerPrefs.GetFloat(volumeSlider.name);
-                Debug.Log(volumeSlider.group.audioMixer.SetFloat(volumeSlider.name, volumeLevel));
+                volumeSlider.group.audioMixer.SetFloat(volumeSlider.name, volumeLevel);
                 volumeSlider.slider.value = volumeLevel;
             }
         }
