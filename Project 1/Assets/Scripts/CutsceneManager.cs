@@ -15,8 +15,12 @@ public class CutsceneManager : MonoBehaviour
 
     [SerializeField] private UnityEvent _OnFinish;
 
+    private bool _autoPlay = false;
+
     private void Awake()
     {
+        if (PlayerPrefs.HasKey("AutoPlay"))
+            _autoPlay = PlayerPrefs.GetInt("AutoPlay") != 0 ? true : false;
 
         _timer = new WaitForSeconds(_sceneTime);
 
@@ -26,7 +30,8 @@ public class CutsceneManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(AutoSwitch());
+        if (_autoPlay)
+            StartCoroutine(AutoSwitch());
     }
 
     private void queueCams()
@@ -63,8 +68,11 @@ public class CutsceneManager : MonoBehaviour
         if (_camerasQueue.Count != 0)
         {
             nextCamera();
-            StopAllCoroutines();
-            StartCoroutine(AutoSwitch());
+            if (_autoPlay)
+            {
+                StopAllCoroutines();
+                StartCoroutine(AutoSwitch());
+            }
         }
         else
         {
