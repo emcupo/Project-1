@@ -5,15 +5,17 @@ public class ChangeScene : MonoBehaviour
     [SerializeField] private bool isActive = true;
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (isActive)
+        if (collider.CompareTag("Player"))
         {
-            int index = SceneManager.GetActiveScene().buildIndex;
+            if (isActive)
+            {
+                int index = SceneManager.GetActiveScene().buildIndex;
 
-            if (index < SceneManager.sceneCountInBuildSettings - 1)
-                SceneManager.LoadScene(++index);
-            else
-                Debug.LogWarning("No more levels exist");
+                if (index < SceneManager.sceneCountInBuildSettings - 1)
+                    SceneManager.LoadScene(++index);
+                else
+                    Debug.LogWarning("No more levels exist");
+            }
         }
-
     }
 }
