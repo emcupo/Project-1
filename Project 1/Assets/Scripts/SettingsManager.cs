@@ -9,6 +9,7 @@ public class SettingsManager : MonoBehaviour
 
     private void Start()
     {
+        LoadToggle();
         LoadVolume();
     }
     public void ToggleAutoPlay()
@@ -31,6 +32,14 @@ public class SettingsManager : MonoBehaviour
                 volumeSlider.group.audioMixer.SetFloat(volumeSlider.name, volumeLevel);
                 volumeSlider.slider.value = volumeLevel;
             }
+        }
+    }
+
+    private void LoadToggle()
+    {
+        if (PlayerPrefs.HasKey("AutoPlay"))
+        {
+            _toggle.isOn = PlayerPrefs.GetInt("AutoPlay") != 0 ? true : false;
         }
     }
 
