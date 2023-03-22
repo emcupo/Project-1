@@ -1,7 +1,8 @@
 # TO DO: POLISH
-## Qeneral
+## General
 - [ ] Equalize music volumes (reduce the difference in volume)
 - [ ] Give more personality to menu UI
+- [ ] Implement a checkpoint for long levels
 
 ## Gameplay Feedback changes
 - [ ] Picking up a key makes a sound
