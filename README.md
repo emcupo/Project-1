@@ -1,6 +1,7 @@
 # TO DO: POLISH
-## Quality of Life
+## Qeneral
 - [ ] Equalize music volumes (reduce the difference in volume)
+- [ ] Give more personality to menu UI
 
 ## Gameplay Feedback changes
 - [ ] Picking up a key makes a sound
