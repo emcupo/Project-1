@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Respawn : MonoBehaviour
@@ -16,6 +17,8 @@ public class Respawn : MonoBehaviour
 
 
     [SerializeField] private GameObject _deadBody;
+    private List<GameObject> _remains = new List<GameObject>();
+    private int _maxCount = -1;
 
     public static Action playerDied;
     public static Action playerRespawned;
@@ -37,6 +40,8 @@ public class Respawn : MonoBehaviour
     private void Start()
     {
         _startPosition = transform.position;
+        if (PlayerPrefs.HasKey("remainMax"))
+            _maxCount = (int)PlayerPrefs.GetFloat("remainMax");
     }
 
     private void OnEnable()
@@ -59,11 +64,33 @@ public class Respawn : MonoBehaviour
     private IEnumerator RestartScene()
     {
         yield return _respawn;
-        Instantiate(_deadBody, transform.position, Quaternion.identity);
+        SpawnRemain();
         transform.position = _startPosition;
         enablePlayer(true);
         _audioSource.Stop();
         playerRespawned?.Invoke();
+
+    }
+
+    private void SpawnRemain()
+    {
+        if (_remains.Count <= _maxCount || _maxCount <= -1)
+        {
+            string key = "remainAlpha";
+            float alpha = 1;
+            if (PlayerPrefs.HasKey(key))
+                alpha = (255 - PlayerPrefs.GetFloat(key)) / 255;
+
+            if (alpha <= 0)
+                return;
+
+            GameObject remain = Instantiate(_deadBody, transform.position, Quaternion.identity);
+
+            SpriteRenderer[] r = remain.GetComponentsInChildren<SpriteRenderer>();
+            r[0].color = new Color(r[0].color.r, r[0].color.g, r[0].color.b, alpha);
+            r[1].color = new Color(r[1].color.r, r[1].color.g, r[1].color.b, alpha);
+            _remains.Add(remain);
+        }
 
     }
 

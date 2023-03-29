@@ -6,11 +6,13 @@ public class SettingsManager : MonoBehaviour
 {
     [SerializeField] private Toggle _toggle;
     [SerializeField] private SoundSlider[] soundSliders = new SoundSlider[1];
+    [SerializeField] private PrefSlider[] otherSliders;
 
     private void Start()
     {
         LoadToggle();
         LoadVolume();
+        LoadRemains();
     }
     public void ToggleAutoPlay()
     {
@@ -35,6 +37,20 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
+    private void LoadRemains()
+    {
+        for (int i = 0; i < otherSliders.Length; i++)
+        {
+            PrefSlider slider = otherSliders[i];
+            if (PlayerPrefs.HasKey(slider.name))
+            {
+                float value = PlayerPrefs.GetFloat(slider.name);
+                slider.slider.value = value;
+            }
+        }
+
+    }
+
     private void LoadToggle()
     {
         if (PlayerPrefs.HasKey("AutoPlay"))
@@ -51,13 +67,22 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.SetFloat(volumeSlider.name, volumeSlider.slider.value);
     }
 
-    [System.Serializable]
-    struct SoundSlider
+    public void changeValue(int targetSlider)
     {
-        public string name;
-        public AudioMixerGroup group;
-        public Slider slider;
+        PrefSlider slider = otherSliders[targetSlider];
+        PlayerPrefs.SetFloat(slider.name, slider.slider.value);
     }
-
 }
 
+[System.Serializable]
+class SoundSlider : PrefSlider
+{
+    public AudioMixerGroup group;
+}
+
+[System.Serializable]
+class PrefSlider
+{
+    public string name;
+    public Slider slider;
+}

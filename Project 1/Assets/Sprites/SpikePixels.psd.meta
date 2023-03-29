@@ -158,6 +158,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: SpikePixels_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec08759e2dc84d94091cf4266ddc95a3
+      internalID: 203374114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -169,6 +190,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      SpikePixels_2: 203374114
       SpikePixels_1: 2048030789
       SpikePixels_0: -1589199186
   spritePackingTag: 

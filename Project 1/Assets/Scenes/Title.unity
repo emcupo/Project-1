@@ -161,6 +161,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &33094129 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9033665243965475318, guid: 5bbf3f63be4f67640bfec72ce0b946b2, type: 3}
+  m_PrefabInstance: {fileID: 3521559900214053183}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &48808441
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,6 +930,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61755d09f04a547ddb972d5b7f05ea8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &998609231 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1824103860392047403, guid: 5bbf3f63be4f67640bfec72ce0b946b2, type: 3}
+  m_PrefabInstance: {fileID: 3521559900214053183}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1002583962
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,14 +1002,19 @@ MonoBehaviour:
   _toggle: {fileID: 3521559900214053184}
   soundSliders:
   - name: music
-    group: {fileID: -180021717788170342, guid: b493f16980068e248979fb39a4d0b0ea, type: 2}
     slider: {fileID: 950157370}
+    group: {fileID: -180021717788170342, guid: b493f16980068e248979fb39a4d0b0ea, type: 2}
   - name: traps
-    group: {fileID: -1496919252586301114, guid: b493f16980068e248979fb39a4d0b0ea, type: 2}
     slider: {fileID: 375942432}
+    group: {fileID: -1496919252586301114, guid: b493f16980068e248979fb39a4d0b0ea, type: 2}
   - name: other
-    group: {fileID: 1794853457698044492, guid: b493f16980068e248979fb39a4d0b0ea, type: 2}
     slider: {fileID: 1472043051}
+    group: {fileID: 1794853457698044492, guid: b493f16980068e248979fb39a4d0b0ea, type: 2}
+  otherSliders:
+  - name: remainMax
+    slider: {fileID: 33094129}
+  - name: remainAlpha
+    slider: {fileID: 998609231}
 --- !u!1001 &1057947881
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7821,6 +7848,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1367047134}
     m_Modifications:
+    - target: {fileID: 1824103860392047403, guid: 5bbf3f63be4f67640bfec72ce0b946b2, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1002583965}
+    - target: {fileID: 1824103860392047403, guid: 5bbf3f63be4f67640bfec72ce0b946b2, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: changeValue
+      objectReference: {fileID: 0}
     - target: {fileID: 3521559899255887684, guid: 5bbf3f63be4f67640bfec72ce0b946b2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -8088,6 +8123,14 @@ PrefabInstance:
     - target: {fileID: 8928769863541149219, guid: 5bbf3f63be4f67640bfec72ce0b946b2, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -25
+      objectReference: {fileID: 0}
+    - target: {fileID: 9033665243965475318, guid: 5bbf3f63be4f67640bfec72ce0b946b2, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1002583965}
+    - target: {fileID: 9033665243965475318, guid: 5bbf3f63be4f67640bfec72ce0b946b2, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: changeValue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bbf3f63be4f67640bfec72ce0b946b2, type: 3}
