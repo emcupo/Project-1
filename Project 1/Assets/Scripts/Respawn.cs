@@ -40,8 +40,6 @@ public class Respawn : MonoBehaviour
     private void Start()
     {
         _startPosition = transform.position;
-        if (PlayerPrefs.HasKey("remainMax"))
-            _maxCount = (int)PlayerPrefs.GetFloat("remainMax");
     }
 
     private void OnEnable()
@@ -74,24 +72,40 @@ public class Respawn : MonoBehaviour
 
     private void SpawnRemain()
     {
-        if (_remains.Count <= _maxCount || _maxCount <= -1)
+        RemoveOldest();
+
+        string key = "remainAlpha";
+        float alpha = 1;
+        if (PlayerPrefs.HasKey(key))
+            alpha = (255 - PlayerPrefs.GetFloat(key)) / 255;
+
+        if (alpha <= 0)
+            return;
+
+        GameObject remain = Instantiate(_deadBody, transform.position, Quaternion.identity);
+        _remains.Add(remain);
+
+        SpriteRenderer[] r = remain.GetComponentsInChildren<SpriteRenderer>();
+        r[0].color = new Color(r[0].color.r, r[0].color.g, r[0].color.b, alpha);
+        r[1].color = new Color(r[1].color.r, r[1].color.g, r[1].color.b, alpha);
+
+
+    }
+
+    private void RemoveOldest()
+    {
+        if (PlayerPrefs.HasKey("remainMax"))
+            _maxCount = (int)PlayerPrefs.GetFloat("remainMax");
+
+        if (_remains.Count == 0 || _maxCount <= 0)
+            return;
+
+        while (_remains.Count >= _maxCount)
         {
-            string key = "remainAlpha";
-            float alpha = 1;
-            if (PlayerPrefs.HasKey(key))
-                alpha = (255 - PlayerPrefs.GetFloat(key)) / 255;
-
-            if (alpha <= 0)
-                return;
-
-            GameObject remain = Instantiate(_deadBody, transform.position, Quaternion.identity);
-
-            SpriteRenderer[] r = remain.GetComponentsInChildren<SpriteRenderer>();
-            r[0].color = new Color(r[0].color.r, r[0].color.g, r[0].color.b, alpha);
-            r[1].color = new Color(r[1].color.r, r[1].color.g, r[1].color.b, alpha);
-            _remains.Add(remain);
+            GameObject previous = _remains[0];
+            _remains.Remove(previous);
+            Destroy(previous);
         }
-
     }
 
     private void enablePlayer(bool enabled)
