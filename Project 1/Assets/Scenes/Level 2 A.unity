@@ -411,11 +411,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 530521429671940971, guid: 272209b1c374bc547846404d1eb9114f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: -1.14
       objectReference: {fileID: 0}
     - target: {fileID: 530521429671940971, guid: 272209b1c374bc547846404d1eb9114f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.59
+      value: 10.86
       objectReference: {fileID: 0}
     - target: {fileID: 530521429671940971, guid: 272209b1c374bc547846404d1eb9114f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -452,7 +452,35 @@ PrefabInstance:
     - target: {fileID: 530521429671940980, guid: 272209b1c374bc547846404d1eb9114f, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 829946ef126d4cc488da63dd54c411f7, type: 3}
+      objectReference: {fileID: 21300000, guid: c1192cac5f68af944bfa18bc7226caf9, type: 3}
+    - target: {fileID: 530521429671940980, guid: 272209b1c374bc547846404d1eb9114f, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 530521429671940980, guid: 272209b1c374bc547846404d1eb9114f, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 530521429671940980, guid: 272209b1c374bc547846404d1eb9114f, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 530521429671940982, guid: 272209b1c374bc547846404d1eb9114f, type: 3}
+      propertyPath: m_Size.y
+      value: 2.0900793
+      objectReference: {fileID: 0}
+    - target: {fileID: 530521429671940982, guid: 272209b1c374bc547846404d1eb9114f, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.29503962
+      objectReference: {fileID: 0}
+    - target: {fileID: 530521429671940982, guid: 272209b1c374bc547846404d1eb9114f, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 530521429671940982, guid: 272209b1c374bc547846404d1eb9114f, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 3.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 272209b1c374bc547846404d1eb9114f, type: 3}
 --- !u!1 &1567958090
@@ -543,11 +571,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 530521429671940971, guid: 272209b1c374bc547846404d1eb9114f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.75
+      value: 8.83
       objectReference: {fileID: 0}
     - target: {fileID: 530521429671940971, guid: 272209b1c374bc547846404d1eb9114f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0000006258487
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 530521429671940971, guid: 272209b1c374bc547846404d1eb9114f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -580,6 +608,22 @@ PrefabInstance:
     - target: {fileID: 530521429671940971, guid: 272209b1c374bc547846404d1eb9114f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 530521429671940980, guid: 272209b1c374bc547846404d1eb9114f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b94fa0c46be113b46b52104226e07c6c, type: 3}
+    - target: {fileID: 530521429671940980, guid: 272209b1c374bc547846404d1eb9114f, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 530521429671940980, guid: 272209b1c374bc547846404d1eb9114f, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 530521429671940980, guid: 272209b1c374bc547846404d1eb9114f, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 530521429671940981, guid: 272209b1c374bc547846404d1eb9114f, type: 3}
