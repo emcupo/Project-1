@@ -12,9 +12,8 @@ public class SpikeTrap : MonoBehaviour
 
     private bool _motionDetected;
 
-    private Sprite _inactiveSprite;
     [Tooltip("How the trap will look while active, when inactive it will revert to its original sprite")]
-    [SerializeField] private Sprite _activeSprite;
+    [SerializeField] private Sprite[] _sprites;
 
     [SerializeField] private float _triggerSpeed = 1f;
     [SerializeField] private float _triggerDuration = 2f;
@@ -30,11 +29,6 @@ public class SpikeTrap : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         if (_renderer == null)
             _renderer = GetComponent<SpriteRenderer>();
-
-        _inactiveSprite = _renderer.sprite;
-
-        if (_activeSprite == null)
-            _activeSprite = _inactiveSprite;
 
         if (_state == trapState.HIDDEN)
         {
@@ -81,13 +75,13 @@ public class SpikeTrap : MonoBehaviour
     private IEnumerator TriggerTrap()
     {
         _state = trapState.STARTED;
-
+        _renderer.sprite = _sprites[(int)_state];
         yield return _speed;
         _state = trapState.ACTIVE;
-        _renderer.sprite = _activeSprite;
+        _renderer.sprite = _sprites[(int)_state];
         audioSource.Play();
         yield return _duration;
         _state = trapState.INACTIVE;
-        _renderer.sprite = _inactiveSprite;
+        _renderer.sprite = _sprites[(int)_state];
     }
 }
