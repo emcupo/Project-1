@@ -12,7 +12,6 @@ public class SpikeTrap : MonoBehaviour
 
     private bool _motionDetected;
 
-    [Tooltip("How the trap will look while active, when inactive it will revert to its original sprite")]
     [SerializeField] private Sprite[] _sprites;
 
     [SerializeField] private float _triggerSpeed = 1f;

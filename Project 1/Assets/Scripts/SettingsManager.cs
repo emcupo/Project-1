@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -7,12 +8,14 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private Toggle _toggle;
     [SerializeField] private SoundSlider[] soundSliders = new SoundSlider[1];
     [SerializeField] private PrefSlider[] otherSliders;
+    [SerializeField] private PrefInputField[] inputFields = new PrefInputField[1];
 
     private void Start()
     {
         LoadToggle();
         LoadVolume();
-        LoadRemains();
+        LoadOtherSliders();
+        LoadInput();
     }
     public void ToggleAutoPlay()
     {
@@ -37,7 +40,7 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
-    private void LoadRemains()
+    private void LoadOtherSliders()
     {
         for (int i = 0; i < otherSliders.Length; i++)
         {
@@ -49,6 +52,19 @@ public class SettingsManager : MonoBehaviour
             }
         }
 
+    }
+
+    private void LoadInput()
+    {
+        for (int i = 0; i < inputFields.Length; i++)
+        {
+            PrefInputField field = inputFields[i];
+            if (PlayerPrefs.HasKey(field.name))
+            {
+                float value = PlayerPrefs.GetFloat(field.name);
+                field.field.text = value + "";
+            }
+        }
     }
 
     private void LoadToggle()
@@ -72,6 +88,12 @@ public class SettingsManager : MonoBehaviour
         PrefSlider slider = otherSliders[targetSlider];
         PlayerPrefs.SetFloat(slider.name, slider.slider.value);
     }
+
+    public void changeFieldValue(int target)
+    {
+        PrefInputField field = inputFields[target];
+        PlayerPrefs.SetFloat(field.name, float.Parse(field.field.text));
+    }
 }
 
 [System.Serializable]
@@ -85,4 +107,11 @@ class PrefSlider
 {
     public string name;
     public Slider slider;
+}
+
+[System.Serializable]
+class PrefInputField
+{
+    public string name;
+    public TMP_InputField field;
 }
