@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Key : MonoBehaviour
 {
-
+    private AudioSource _audioSource;
     private SpriteRenderer _renderer;
     [SerializeField] private GameObject[] _doors = new GameObject[1];
 
@@ -23,7 +23,7 @@ public class Key : MonoBehaviour
     {
         _renderer = GetComponent<SpriteRenderer>();
         _color = _renderer.color;
-
+        _audioSource = GetComponent<AudioSource>();
         foreach (GameObject door in _doors)
         {
             door.GetComponent<SpriteRenderer>().color = _color;
@@ -62,6 +62,7 @@ public class Key : MonoBehaviour
             {
                 if (door != null)
                     door.SetActive(false);
+                _audioSource.Play();
             }
             _renderer.enabled = false;
         }
