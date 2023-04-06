@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FollowThePath : MonoBehaviour
@@ -10,6 +8,16 @@ public class FollowThePath : MonoBehaviour
 
     private int randomSpot;
     private float waitTime;
+
+    [SerializeField] private LineRenderer _lr;
+
+    private void Awake()
+    {
+        if (_lr == null)
+            _lr = gameObject.GetComponentInChildren<LineRenderer>();
+
+        GenerateMark();
+    }
 
     private void Start()
     {
@@ -35,5 +43,16 @@ public class FollowThePath : MonoBehaviour
                 waitTime = -Time.deltaTime;
             }
         }
+    }
+
+    private void GenerateMark()
+    {
+        Vector3[] positions = new Vector3[moveSpots.Length];
+        for (int i = 0; i < moveSpots.Length; i++)
+        {
+            positions[i] = moveSpots[i].position;
+        }
+        _lr.positionCount = moveSpots.Length;
+        _lr.SetPositions(positions);
     }
 }
