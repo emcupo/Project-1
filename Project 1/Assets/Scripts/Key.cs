@@ -46,6 +46,7 @@ public class Key : MonoBehaviour
     private void LockDoors()
     {
         _renderer.enabled = true;
+        GetComponent<Collider2D>().enabled = true;
         foreach (GameObject door in _doors)
         {
             if (door != null)
@@ -66,5 +67,6 @@ public class Key : MonoBehaviour
             }
             _renderer.enabled = false;
         }
+        GetComponent<Collider2D>().enabled = false;
     }
 }
