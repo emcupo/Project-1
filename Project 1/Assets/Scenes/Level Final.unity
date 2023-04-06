@@ -1213,7 +1213,7 @@ GameObject:
   - component: {fileID: 171457042}
   - component: {fileID: 171457041}
   m_Layer: 0
-  m_Name: Enemy 4
+  m_Name: Blue Enemy 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1622,7 +1622,7 @@ GameObject:
   - component: {fileID: 343731358}
   - component: {fileID: 343731357}
   m_Layer: 0
-  m_Name: Enemy 4 (1)
+  m_Name: Blue Enemy 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
