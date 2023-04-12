@@ -26,6 +26,10 @@ public class Key : MonoBehaviour
         _renderer = GetComponent<SpriteRenderer>();
         _color = _renderer.color;
         _audioSource = GetComponent<AudioSource>();
+
+        if (_collider == null)
+            _collider = GetComponent<Collider2D>();
+
         foreach (GameObject door in _doors)
         {
             door.GetComponent<SpriteRenderer>().color = _color;
@@ -68,9 +72,8 @@ public class Key : MonoBehaviour
                 _audioSource.Play();
             }
             _renderer.enabled = false;
+            _collider.enabled = false;
         }
-        if (_collider == null)
-            _collider = GetComponent<Collider2D>();
-        _collider.enabled = false;
+
     }
 }
