@@ -7,6 +7,8 @@ public class Key : MonoBehaviour
     [SerializeField] private GameObject[] _doors = new GameObject[1];
 
     [SerializeField] private Color _color;
+
+    private Collider2D _collider;
     private bool _locked = true;
 
     private void OnEnable()
@@ -46,7 +48,7 @@ public class Key : MonoBehaviour
     private void LockDoors()
     {
         _renderer.enabled = true;
-        GetComponent<Collider2D>().enabled = true;
+        _collider.enabled = true;
         foreach (GameObject door in _doors)
         {
             if (door != null)
@@ -54,7 +56,7 @@ public class Key : MonoBehaviour
         }
     }
 
-    
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Player") && _locked)
@@ -67,6 +69,8 @@ public class Key : MonoBehaviour
             }
             _renderer.enabled = false;
         }
-        GetComponent<Collider2D>().enabled = false;
+        if (_collider == null)
+            _collider = GetComponent<Collider2D>();
+        _collider.enabled = false;
     }
 }
