@@ -25,6 +25,7 @@ public class Fan : MonoBehaviour
                     _rb = _hit.transform.GetComponent<Rigidbody2D>();
                 push(_rb);
             }
+            Debug.Log(point.name + " colliding with " + _hit.collider.name + " distance of " + _hit.distance);
             Debug.DrawRay(point.position, transform.up * _hit.distance);
             distances[i] = _hit.distance;
         }
