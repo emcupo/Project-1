@@ -4992,7 +4992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5424c5431ac00343882fe1cd441192c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _power: 1500
+  _power: 5000
   _wind: {fileID: 7981683151681269765}
   points:
   - {fileID: 2186699132012597103}
