@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3070714800018411064}
   - component: {fileID: 8234770207680900563}
   - component: {fileID: -8075519883584634170}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Enemy 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3286106787311091036}
   - component: {fileID: 4487767895063014139}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Burn
   m_TagString: Untagged
   m_Icon: {fileID: 0}

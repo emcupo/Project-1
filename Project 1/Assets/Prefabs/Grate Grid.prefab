@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 334418196}
   - component: {fileID: 334418198}
   - component: {fileID: 334418197}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Grate (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 798459447}
   - component: {fileID: 798459449}
   - component: {fileID: 798459448}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Grate (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 2064083895}
   - component: {fileID: 2064083897}
   - component: {fileID: 2064083896}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Grate (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 7102332010364325557}
   - component: {fileID: 1674190526604334388}
   - component: {fileID: 6490892050238962173}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Grate Grid
   m_TagString: Trap
   m_Icon: {fileID: 0}
@@ -586,7 +586,7 @@ GameObject:
   - component: {fileID: 2939478300421192025}
   - component: {fileID: 7711221197883652130}
   - component: {fileID: 2250271841779141667}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Grate
   m_TagString: Untagged
   m_Icon: {fileID: 0}

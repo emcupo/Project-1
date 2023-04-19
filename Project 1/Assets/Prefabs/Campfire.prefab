@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6279284914125019274}
   - component: {fileID: 6279284914125019272}
   - component: {fileID: 6279284914125019273}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4822,7 +4822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6279284915223338684}
   - component: {fileID: 6279284915223338685}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Campfire
   m_TagString: Untagged
   m_Icon: {fileID: 0}

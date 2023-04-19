@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6205904543975785510}
   - component: {fileID: 3831196715376109738}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8820307568016745551}
   - component: {fileID: 8820307568016745536}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player_DeadBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
