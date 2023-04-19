@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
@@ -68,6 +69,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (PauseManager.instance != null)
             PauseManager.instance.Pause();
+    }
+
+    private void OnRestart() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
     }
 
 }
