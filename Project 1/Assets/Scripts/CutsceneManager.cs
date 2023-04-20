@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,6 +15,9 @@ public class CutsceneManager : MonoBehaviour
     private WaitForSeconds _timer;
 
     [SerializeField] private UnityEvent _OnFinish;
+
+    [Tooltip("Used for death count")]
+    [SerializeField] private TextMeshProUGUI _text;
 
     private bool _autoPlay = false;
 
@@ -30,6 +34,7 @@ public class CutsceneManager : MonoBehaviour
 
     private void Start()
     {
+        ApplyText();
         if (_autoPlay)
             StartCoroutine(AutoSwitch());
     }
@@ -63,6 +68,11 @@ public class CutsceneManager : MonoBehaviour
             StartCoroutine(AutoSwitch());
     }
 
+    private void ApplyText()
+    {
+        if (_text != null)
+            _text.text = "You died\n" + Respawn.deaths + "\ntimes!";
+    }
     private void OnSubmit()
     {
         if (_camerasQueue.Count != 0)
