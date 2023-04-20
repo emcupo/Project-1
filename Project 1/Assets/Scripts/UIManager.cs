@@ -30,6 +30,13 @@ public class UIManager : MonoBehaviour
         {
             Instantiate(_system, Vector3.zero, Quaternion.identity);
         }
+        if (scene.buildIndex == 0)
+            Respawn.deaths = 0;
+    }
+
+    private void ResetDeath()
+    {
+
     }
 
     public void PlayGame()
