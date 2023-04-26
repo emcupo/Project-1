@@ -11,7 +11,7 @@ public class Fan : MonoBehaviour
     private RaycastHit2D _hit;
     private Rigidbody2D _rb;
 
-    private void Update()
+    private void FixedUpdate()
     {
         float[] distances = new float[points.Length];
         Transform point;
