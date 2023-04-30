@@ -1,28 +1,32 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
-
 public class SettingsManager : MonoBehaviour
 {
-    [SerializeField] private Toggle _toggle;
+    [SerializeField] private Toggle _fullScreenToggle;
+    [SerializeField] private Toggle _vsyncToggle;
     [SerializeField] private SoundSlider[] soundSliders = new SoundSlider[1];
-    [SerializeField] private PrefSlider[] otherSliders;
-    [SerializeField] private PrefInputField[] inputFields = new PrefInputField[1];
+
+    [SerializeField] private TextMeshProUGUI resolutionLabel;
+    [SerializeField] private List<Resolution> resolutions = new List<Resolution>();
+    private int selectedResolution = 0;
+
+    private void Awake()
+    {
+        if (resolutions.Count <= 0)
+        {
+            resolutions.Add(new Resolution(1920, 1080));
+            resolutions.Add(new Resolution(1600, 900));
+            resolutions.Add(new Resolution(1280, 720));
+            resolutions.Add(new Resolution(854, 480));
+        }
+    }
 
     private void Start()
     {
-        LoadToggle();
         LoadVolume();
-        LoadOtherSliders();
-        LoadInput();
-    }
-    public void ToggleAutoPlay()
-    {
-        if (_toggle.isOn)
-            PlayerPrefs.SetInt("AutoPlay", 1);
-        else
-            PlayerPrefs.SetInt("AutoPlay", 0);
     }
     private void LoadVolume()
     {
@@ -40,41 +44,6 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
-    private void LoadOtherSliders()
-    {
-        for (int i = 0; i < otherSliders.Length; i++)
-        {
-            PrefSlider slider = otherSliders[i];
-            if (PlayerPrefs.HasKey(slider.name))
-            {
-                float value = PlayerPrefs.GetFloat(slider.name);
-                slider.slider.value = value;
-            }
-        }
-
-    }
-
-    private void LoadInput()
-    {
-        for (int i = 0; i < inputFields.Length; i++)
-        {
-            PrefInputField field = inputFields[i];
-            if (PlayerPrefs.HasKey(field.name))
-            {
-                float value = PlayerPrefs.GetFloat(field.name);
-                field.field.text = value + "";
-            }
-        }
-    }
-
-    private void LoadToggle()
-    {
-        if (PlayerPrefs.HasKey("AutoPlay"))
-        {
-            _toggle.isOn = PlayerPrefs.GetInt("AutoPlay") != 0 ? true : false;
-        }
-    }
-
     public void changeVolume(int targetSlider)
     {
         SoundSlider volumeSlider = soundSliders[targetSlider];
@@ -83,16 +52,39 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.SetFloat(volumeSlider.name, volumeSlider.slider.value);
     }
 
-    public void changeValue(int targetSlider)
+
+    public void ResolutionLeft()
     {
-        PrefSlider slider = otherSliders[targetSlider];
-        PlayerPrefs.SetFloat(slider.name, slider.slider.value);
+        selectedResolution--;
+        if (selectedResolution < 0)
+            selectedResolution = resolutions.Count - 1;
+        UpdateResolution();
     }
 
-    public void changeFieldValue(int target)
+    public void ResolutionRight()
     {
-        PrefInputField field = inputFields[target];
-        PlayerPrefs.SetFloat(field.name, float.Parse(field.field.text));
+        selectedResolution++;
+        if (selectedResolution >= resolutions.Count)
+            selectedResolution = 0;
+        UpdateResolution();
+    }
+
+    public void UpdateResolution()
+    {
+        resolutionLabel.text = resolutions[selectedResolution].ToString();
+    }
+    public void ApplyGraphics()
+    {
+        if (_vsyncToggle.isOn)
+        {
+            QualitySettings.vSyncCount = 1;
+        }
+        else
+        {
+            QualitySettings.vSyncCount = 0;
+        }
+        Resolution res = resolutions[selectedResolution];
+        Screen.SetResolution(res.width, res.height, _fullScreenToggle.isOn);
     }
 }
 
@@ -110,8 +102,18 @@ class PrefSlider
 }
 
 [System.Serializable]
-class PrefInputField
+class Resolution
 {
-    public string name;
-    public TMP_InputField field;
+    public int width;
+    public int height;
+
+    public Resolution(int width, int height)
+    {
+        this.width = width;
+        this.height = height;
+    }
+    public override string ToString()
+    {
+        return width + "x" + height;
+    }
 }
