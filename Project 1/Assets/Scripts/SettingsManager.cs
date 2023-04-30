@@ -23,10 +23,10 @@ public class SettingsManager : MonoBehaviour
             resolutions.Add(new Resolution(854, 480));
         }
     }
-
     private void Start()
     {
         LoadVolume();
+        LoadGraphics();
     }
     private void LoadVolume()
     {
@@ -44,6 +44,35 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
+    private void LoadGraphics()
+    {
+        _fullScreenToggle.isOn = Screen.fullScreen;
+        _vsyncToggle.isOn = QualitySettings.vSyncCount > 0 ? true : false;
+
+        bool foundRes = false;
+        Resolution selectedRes = resolutions[selectedResolution];
+        if (Screen.width != selectedRes.width || Screen.height != selectedRes.height)
+        {
+            for (int i = 0; i < resolutions.Count; i++)
+            {
+                if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
+                {
+                    selectedResolution = i;
+                    foundRes = true;
+                    break;
+                }
+            }
+        }
+
+        if (!foundRes)
+        {
+            resolutions.Add(new Resolution(Screen.width, Screen.height));
+            selectedResolution = resolutions.Count - 1;
+        }
+
+        UpdateResolution();
+    }
+
     public void changeVolume(int targetSlider)
     {
         SoundSlider volumeSlider = soundSliders[targetSlider];
@@ -51,7 +80,6 @@ public class SettingsManager : MonoBehaviour
         volumeSlider.group.audioMixer.SetFloat(volumeSlider.name, volumeSlider.slider.value);
         PlayerPrefs.SetFloat(volumeSlider.name, volumeSlider.slider.value);
     }
-
 
     public void ResolutionLeft()
     {
