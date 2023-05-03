@@ -14041,7 +14041,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3070714800018411066, guid: 698eeda4e317df042b1599d305a4d024, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3070714800018411067, guid: 698eeda4e317df042b1599d305a4d024, type: 3}
       propertyPath: moveSpots.Array.data[0]
